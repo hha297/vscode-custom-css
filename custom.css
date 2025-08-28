@@ -1,127 +1,167 @@
-:root {
-  --gradient-dir1: to top right;
-  --gradient-dir2: to bottom left;
-  --gradient-dir3: to right top;
-  --gradient-dir4: to left bottom;
-  --gradient-dir5: to top left;
-  --size: 5px;
+/* Custom Tab Gradient */
+.tab-border-bottom-container,
+.tab-border-top-container {
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.1px;
+  width: 100% !important;
+  height: calc(100% - 1px) !important;
+  background-color: transparent !important;
+  border-radius: inherit;
+  box-sizing: border-box;
 }
-.mtk10,
-.mtk15 {
-  color: transparent;
-  background-image: linear-gradient(var(--gradient-dir4), #fc806c, #ff1bd1);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.tab-border-bottom-container:before,
+.tab-border-top-container:before {
+  content: "";
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinner 3s cubic-bezier(0, 0.8, 0.95, 1) infinite;
+  background: conic-gradient(
+      from 0deg at 50% 51.35%,
+      rgba(185, 215, 243, 0) 0deg,
+      rgba(185, 215, 243, 0) 289.4deg,
+      #407cff 318deg,
+      #da8bff 1turn,
+      #fb7185 2turn
+    ),
+    conic-gradient(
+      from 180deg at 50% 51.35%,
+      rgba(185, 215, 243, 0) 0deg,
+      rgba(185, 215, 243, 0) 287.46deg,
+      #407cff 318deg,
+      #da8bff 1turn,
+      #fb7185 2turn
+    );
+  border-radius: inherit;
 }
-.mtk5,
-.mtk26 {
-  color: transparent;
-  background-image: linear-gradient(
-    var(--gradient-dir1),
-    #4dd78a,
-    #20e3b2,
-    #a2de6a
-  );
+@keyframes spinner {
+  100% {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+.tab {
+  overflow: hidden;
+}
+.tab.active {
+  border-radius: 100px !important;
+  box-shadow: inset 0 1px 1px 0 rgba(199, 211, 234, 0.12),
+    inset 0 24px 48px 0 rgba(199, 211, 234, 0.05),
+    0 24px 32px 0 rgba(6, 6, 14, 0.7);
+}
 
+/* Evondev Dracula */
+body
+  > div[class*="Dracula-"]
+  :where(.mtk5, .mtk9, .mtk10, .mtk15, .mtk16, .mtk17, .mtk26) {
+  color: transparent;
+  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+body > div[class*="Dracula-"] :where(.mtk10, .mtk15) {
+  background-image: linear-gradient(to bottom, #fc806c, #ff1bd1);
+}
+body > div[class*="Dracula-"] :where(.mtk5, .mtk26) {
+  background-image: linear-gradient(to right top, #4dd78a, #20e3b2);
+}
+body > div[class*="Dracula-"] :where(.mtk26) {
+  font-style: italic;
+}
+body > div[class*="Dracula-"] :where(.mtk9, .mtk17) {
+  background-image: linear-gradient(to bottom, #00fdff, #2979ff);
+}
+body > div[class*="Dracula-"] :where(.mtk16) {
+  background-image: linear-gradient(to bottom, #9a86fd, #6a5af9);
+}
+body > div[class*="Dracula-"] :where(.mtk3) {
+  color: #92b4d5;
+}
+
+body > div[class*="Dracula-"] :where(.mtk18, .mtk7) {
+  color: #cbdaff;
+}
+
+body > div[class*="Dracula-"] :where(.mtk13) {
+  color: white;
+}
+
+/* Dracula author */
+body
+  > div[class*="Dracula-evondev-author"]
+  :where(.mtk11, .mtk16, .mtk6, .mtk3, .mtk15) {
+  color: transparent;
   -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Cascadia Code", monospace;
+}
+
+body > div[class*="Dracula-evondev-author"] :where(.mtk26) {
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #ff1bd1, #ff69cf, #ffb86c);
+  font-family: "Cascadia Code", monospace;
+}
+
+body > div[class*="Dracula-evondev-author"] :where(.mtk11) {
+  background-image: linear-gradient(to bottom, #fc806c, #ff1bd1);
+  font-family: "Cascadia Code", monospace;
+}
+body > div[class*="Dracula-evondev-author"] :where(.mtk6) {
+  background-image: linear-gradient(-45deg, #4dd78a, #20e3b2);
+  font-family: "Cascadia Code", monospace;
+}
+body > div[class*="Dracula-evondev-author"] :where(.mtk16) {
+  background-image: linear-gradient(to bottom, #00fdff, #2979ff);
+  font-family: "Cascadia Code", monospace;
+}
+body > div[class*="Dracula-evondev-author"] :where(.mtk3) {
+  background-image: linear-gradient(to bottom, #ffb86c, #ff979a);
+  font-family: "Cascadia Code", monospace;
+}
+
+body > div[class*="Dracula-evondev-author"] :where(.mtk15) {
+  background-image: linear-gradient(to bottom, #bd98ff, #978df8);
+  font-family: "Cascadia Code", monospace;
+}
+body
+  > div[class*="Dracula-evondev-author"]
+  :where(.mtk7, .mtk13, .mtk18, .mtk8) {
+  color: #cbdaff;
+  font-family: "Cascadia Code", monospace;
+}
+body > div[class*="Dracula-evondev-author"] .mtkb {
   -webkit-font-smoothing: auto;
-  font-family: "Cascadia Code";
-  font-size: 16px;
+  font-weight: normal;
+  font-family: "Cascadia Code", monospace;
 }
-.mtk26 {
-  background-image: linear-gradient(
-    var(--gradient-dir5),
-    #4dd78a,
-    #20e3b2,
-    #a2de6a
-  );
+body > div[class*="Dracula-evondev-author"] .view-line {
+  -webkit-font-smoothing: default;
+  font-family: "Cascadia Code", monospace;
 }
-.mtk23,
-.mtk16 {
-  color: transparent;
-  background-image: linear-gradient(var(--gradient-dir1), #d66efd, #6a5af9);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+.editor-instance[data-mode-id="markdown"] .view-line,
+.editor-instance[data-mode-id="plaintext"] .view-line {
+  font-family: "Cascadia Code", monospace;
+  font-size: 13px;
 }
-.mtk9,
-.mtk17 {
-  color: transparent;
-  background-image: linear-gradient(
-    var(--gradient-dir2),
-    #098dff,
-    #2cccff,
-    #2979ff
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+body > div[class*="Dracula-evondev-author"] :where(.mtk14) {
+  color: #cbdaff;
+  font-family: "Cascadia Code", monospace;
 }
-.mtk18 {
-  color: transparent;
-  background-image: linear-gradient(var(--gradient-dir2), #b0beff, #fed9ff);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  font-style: normal;
+body > div[class*="Dracula-evondev-author"] :where(.mtk26) {
+  font-family: "Cascadia Code", monospace;
 }
-.mtk3 {
-  color: transparent;
-  /* background-image: linear-gradient(
-    var(--gradient-dir1),
-    #c29ffd,
-    #ffb4dc,
-    #e39bf7
-  ); */
-  background-image: linear-gradient(to top, #fce1d0, #ffadd6, #e39bf7);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-}
-.mtk7 {
-  color: transparent;
-  background-image: linear-gradient(var(--gradient-dir2), #fc6c8f, #ffb86c);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.mtk8,
-.mtk14 {
-  color: transparent;
-  background-image: linear-gradient(to right, #ffb88c, #eac394);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.monaco-workbench
-  .activitybar
-  > .content
-  :not(.monaco-menu)
-  > .monaco-action-bar
-  .action-item.checked
-  .active-item-indicator:before {
-  border: 0;
-  width: 3px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(45deg, #fc6c8f, #ff2ced);
-}
-.monaco-workbench
-  .activitybar
-  > .content
-  :not(.monaco-menu)
-  > .monaco-action-bar
-  .badge
-  .badge-content {
-  background-image: linear-gradient(45deg, #fc6c8f, #ff2ced);
-}
-.monaco-editor .cursors-layer .cursor {
-  background-image: linear-gradient(to top, #6a5af9, #d66efd, #fc6c8f, #ff2ced);
+body > div[class*="Dracula-evondev-author"] :where(.mtk27) {
+  font-family: "Cascadia Code", monospace;
 }
 
 .monaco-workbench
@@ -129,14 +169,9 @@
   > .content
   .editor-group-container
   > .title
-  .tabs-container
-  > .tab.active.tab-border-top
-  > .tab-border-top-container {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: transparent;
+  .tabs-container {
+  padding: 8px;
+  gap: 8px;
 }
 .monaco-workbench
   .part.editor
@@ -144,95 +179,22 @@
   .editor-group-container
   > .title
   .tabs-container
-  > .tab.active.tab-border-top
-  > .tab-border-top-container:before,
-.monaco-workbench
-  .part.editor
-  > .content
-  .editor-group-container
-  > .title
-  .tabs-container
-  > .tab.active.tab-border-top
-  > .tab-border-top-container:after {
+  > .tab.sizing-fit {
+  background-color: #21222c !important;
+  border-radius: 4px;
+}
+.tab.tab-actions-right.sizing-fit.has-icon.tab-border-top.active .tab-label {
+  position: relative;
+}
+.tab.tab-actions-right.sizing-fit.has-icon.tab-border-top.active:before {
   content: "";
-  width: var(--size);
-  height: var(--size);
   position: absolute;
-  border: 2px solid;
-  border-image-slice: 1;
-}
-.monaco-workbench
-  .part.editor
-  > .content
-  .editor-group-container
-  > .title
-  .tabs-container
-  > .tab.active.tab-border-top
-  > .tab-border-top-container:before {
-  top: 0;
-  left: 0;
-  border-right: 0;
-  border-bottom: 0;
-  border-image-source: linear-gradient(-45deg, #4dd78a, #20e3b2);
-}
-.monaco-workbench
-  .part.editor
-  > .content
-  .editor-group-container
-  > .title
-  .tabs-container
-  > .tab.active.tab-border-top
-  > .tab-border-top-container:after {
-  right: 0;
-  bottom: 0;
-  border-top: 0;
-  border-left: 0;
-  border-image-source: linear-gradient(-45deg, #6a5af9, #d66efd);
-}
-.monaco-workbench
-  .part.editor
-  > .content
-  .editor-group-container
-  > .title
-  .tabs-container
-  > .tab.active:before,
-.monaco-workbench
-  .part.editor
-  > .content
-  .editor-group-container
-  > .title
-  .tabs-container
-  > .tab.active:after {
-  content: "";
-  width: var(--size);
-  height: var(--size);
-  position: absolute;
-  border: 2px solid;
-  border-image-slice: 1;
-}
-.monaco-workbench
-  .part.editor
-  > .content
-  .editor-group-container
-  > .title
-  .tabs-container
-  > .tab.active:before {
-  left: 0;
-  bottom: 0;
-  border-top: 0;
-  border-right: 0;
-  border-image-source: linear-gradient(-45deg, #fc6c8f, #ffb86c);
-}
-.monaco-workbench
-  .part.editor
-  > .content
-  .editor-group-container
-  > .title
-  .tabs-container
-  > .tab.active:after {
-  top: 0;
-  right: 0;
-  border-left: 0;
-  border-bottom: 0;
-  border-image-source: linear-gradient(-45deg, #098dff, #2cccff);
+  background: #21222c;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  border-radius: inherit;
+  transform: translate(-50.1%, -50.1%);
+  border-radius: inherit;
 }
