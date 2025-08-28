@@ -5,6 +5,8 @@
 Follow these steps to set up the project locally on your machine.
 
 ![](./preview.png)
+<img width="705" height="54" alt="image" src="https://github.com/user-attachments/assets/69f88a96-259d-4924-8293-dbcf17d239d1" />
+
 
 **Install**
 
